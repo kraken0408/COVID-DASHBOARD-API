@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Hospital Resources - COVID-19 Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .form-container {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: translateY(-2px);
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    <span class="text-2xl font-bold">COVID-19 Tracker</span>
+                </div>
+                <button class="lg:hidden" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div class="hidden w-full lg:flex lg:items-center lg:w-auto" id="mobile-menu">
+                    <ul class="flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0">
+                        <li><a href="home.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">Home</a></li>
+                        <li><a href="resources.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">Hospital Resources</a></li>
+                        <li><a href="update-resources.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">Update Resources</a></li>
+                        <li><a href="cases.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">COVID-19 Cases</a></li>
+                        <li><a href="update-cases.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">Update Cases</a></li>
+                        <li><a href="vaccination-status.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">Vaccination Status</a></li>
+                        <li><a href="flowchar.html" class="block py-2 hover:text-blue-200 transition-colors duration-300">Flowchart</a></li>
+                        <li>
+                            <button id="logoutBtn" class="mt-4 lg:mt-0 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                Logout
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4">
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 form-container">
+            <form id="updateResourcesForm" class="space-y-6">
+                <div class="space-y-4">
+                    <div>
+                        <label for="region" class="block text-sm font-medium text-gray-700 mb-1">Region</label>
+                        <input type="text" id="region"
+                            class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter region name" required>
+                    </div>
+
+                    <div>
+                        <label for="bedsAvailable" class="block text-sm font-medium text-gray-700 mb-1">Beds
+                            Available</label>
+                        <input type="number" id="bedsAvailable"
+                            class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter available beds" required>
+                    </div>
+
+                    <div>
+                        <label for="ventilatorsAvailable"
+                            class="block text-sm font-medium text-gray-700 mb-1">Ventilators Available</label>
+                        <input type="number" id="ventilatorsAvailable"
+                            class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter available ventilators" required>
+                    </div>
+
+                    <div>
+                        <label for="icuCapacity" class="block text-sm font-medium text-gray-700 mb-1">ICU
+                            Capacity</label>
+                        <input type="number" id="icuCapacity"
+                            class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter ICU capacity" required>
+                    </div>
+                </div>
+
+                <div id="updateError" class="text-red-500 text-sm animate__animated animate__fadeIn hidden"></div>
+                <div id="updateSuccess" class="text-green-500 text-sm animate__animated animate__fadeIn hidden">
+                    Hospital resources updated successfully!
+                </div>
+
+                <button type="submit"
+                    class="submit-button w-full py-3 px-4 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Update Resources
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // update-resources.js
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const logoutBtn = document.getElementById("logoutBtn");
+            const updateResourcesForm = document.getElementById("updateResourcesForm");
+            const regionInput = document.getElementById("region");
+            const bedsAvailableInput = document.getElementById("bedsAvailable");
+            const ventilatorsAvailableInput = document.getElementById("ventilatorsAvailable");
+            const icuCapacityInput = document.getElementById("icuCapacity");
+            const updateErrorDiv = document.getElementById("updateError");
+            const updateSuccessDiv = document.getElementById("updateSuccess");
+
+            // Function to handle logout
+            logoutBtn.addEventListener("click", () => {
+                localStorage.removeItem("authToken"); // Clear the token from localStorage
+                window.location.href = "index.html"; // Redirect to login page
+            });
+
+            // Function to check if the user is authenticated
+            const checkAuth = () => {
+                const token = localStorage.getItem("authToken");
+                if (!token) {
+                    window.location.href = "index.html"; // Redirect to login page if not authenticated
+                }
+                return token;
+            };
+
+            // Function to handle form submission and update hospital resources
+            updateResourcesForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const region = regionInput.value.trim();
+                const bedsAvailable = parseInt(bedsAvailableInput.value.trim());
+                const ventilatorsAvailable = parseInt(ventilatorsAvailableInput.value.trim());
+                const icuCapacity = parseInt(icuCapacityInput.value.trim());
+
+                // Check if all fields are filled correctly
+                if (!region || isNaN(bedsAvailable) || isNaN(ventilatorsAvailable) || isNaN(icuCapacity)) {
+                    updateErrorDiv.textContent = "Please fill out all fields correctly.";
+                    return;
+                }
+
+                // Get the token
+                const token = checkAuth();
+
+                try {
+                    // Sending a request to the API to update hospital resources
+                    const response = await fetch("http://localhost:5000/api/covid/hospitals/resources/update", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            region,
+                            bedsAvailable,
+                            ventilatorsAvailable,
+                            icuCapacity,
+                        }),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        updateErrorDiv.textContent = ''; // Clear any previous error messages
+                        updateSuccessDiv.style.display = 'block'; // Show success message
+                        updateResourcesForm.reset(); // Reset the form fields
+                    } else {
+                        updateSuccessDiv.style.display = 'none'; // Hide success message
+                        updateErrorDiv.textContent = data.message || "Failed to update hospital resources.";
+                    }
+                } catch (error) {
+                    updateSuccessDiv.style.display = 'none'; // Hide success message
+                    updateErrorDiv.textContent = "An error occurred while updating hospital resources.";
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

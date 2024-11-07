@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - COVID-19 Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .login-card {
+            animation: fadeIn 0.5s ease-in-out;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: translateY(-2px);
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="login-card max-w-md w-full space-y-8 p-10 rounded-2xl shadow-2xl">
+        <!-- Header -->
+        <div class="text-center">
+            <div class="flex justify-center">
+                <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                    </path>
+                </svg>
+            </div>
+            <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
+                Welcome Back
+            </h2>
+            <p class="mt-2 text-sm text-gray-600">
+                Sign in to COVID-19 Tracker Dashboard
+            </p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="mt-8 space-y-6">
+            <div class="rounded-md shadow-sm space-y-4">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                        Username
+                    </label>
+                    <input id="username" name="username" type="text" required
+                        class="input-field appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="Enter your username">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        Password
+                    </label>
+                    <input id="password" name="password" type="password" required
+                        class="input-field appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                        placeholder="Enter your password">
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="login-error" class="text-red-500 text-sm text-center animate__animated animate__fadeIn hidden">
+                Invalid username or password
+            </div>
+
+            <div>
+                <button type="submit"
+                    class="login-button group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-blue-200 group-hover:text-blue-100" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </span>
+                    Sign in
+                </button>
+            </div>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="text-center mt-4">
+            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-300">
+                Forgot your password?
+            </a>
+            <p class="mt-2 text-xs text-gray-500">
+                By signing in, you agree to our Terms of Service and Privacy Policy
+            </p>
+        </div>
+    </div>
+
+    <script type="module" src="login.js"></script>
+</body>
+
+</html>
