@@ -81,13 +81,14 @@ const displayCovidCases = (data) => {
         caseWidget.classList.add("widget");
         caseWidget.innerHTML = `
             <h3>Region: ${caseData.region}</h3>
-            <p>Active Cases: ${caseData.activeCases}</p>
-            <p>Recovered Cases: ${caseData.recoveredCases}</p>
-            <p>Deaths: ${caseData.deaths}</p>
+            <p>Active Cases: ${caseData.activeCases !== undefined ? caseData.activeCases : "N/A"}</p>
+            <p>Recovered Cases: ${caseData.recovered}</p>
+            <p>Deaths: ${caseData.deaths !== undefined ? caseData.deaths : "N/A"}</p>
         `;
         casesContainer.appendChild(caseWidget);
     });
 };
+
 
 // Function to display hospital resources in widgets
 const displayHospitalResources = (data) => {

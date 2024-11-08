@@ -107,9 +107,9 @@
                     </div>
 
                     <div>
-                        <label for="icuCapacity" class="block text-sm font-medium text-gray-700 mb-1">ICU
+                        <label for="ICUCapacity" class="block text-sm font-medium text-gray-700 mb-1">ICU
                             Capacity</label>
-                        <input type="number" id="icuCapacity"
+                        <input type="number" id="ICUCapacity"
                             class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Enter ICU capacity" required>
                     </div>
@@ -137,7 +137,7 @@
             const regionInput = document.getElementById("region");
             const bedsAvailableInput = document.getElementById("bedsAvailable");
             const ventilatorsAvailableInput = document.getElementById("ventilatorsAvailable");
-            const icuCapacityInput = document.getElementById("icuCapacity");
+            const ICUCapacityInput = document.getElementById("ICUCapacity");
             const updateErrorDiv = document.getElementById("updateError");
             const updateSuccessDiv = document.getElementById("updateSuccess");
 
@@ -163,10 +163,10 @@
                 const region = regionInput.value.trim();
                 const bedsAvailable = parseInt(bedsAvailableInput.value.trim());
                 const ventilatorsAvailable = parseInt(ventilatorsAvailableInput.value.trim());
-                const icuCapacity = parseInt(icuCapacityInput.value.trim());
+                const ICUCapacity = parseInt(ICUCapacityInput.value.trim());
 
                 // Check if all fields are filled correctly
-                if (!region || isNaN(bedsAvailable) || isNaN(ventilatorsAvailable) || isNaN(icuCapacity)) {
+                if (!region || isNaN(bedsAvailable) || isNaN(ventilatorsAvailable) || isNaN(ICUCapacity)) {
                     updateErrorDiv.textContent = "Please fill out all fields correctly.";
                     return;
                 }
@@ -186,7 +186,7 @@
                             region,
                             bedsAvailable,
                             ventilatorsAvailable,
-                            icuCapacity,
+                            ICUCapacity,
                         }),
                     });
 

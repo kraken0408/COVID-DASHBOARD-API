@@ -124,6 +124,35 @@ export async function updateHospitalResources(region, bedsAvailable, ventilators
         throw error;
     }
 }
+// Function to update COVID-19 cases
+export async function updateCovidCases(region, activeCases, recovered, deaths) {
+    const token = localStorage.getItem('authToken'); 
+    try {
+        const response = await fetch(`${API_BASE_URL}/cases/update`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                region,
+                activeCases,
+                recovered,
+                deaths,
+            }),
+        });
+
+        if (response.ok) {
+            return await response.json(); // Return the updated COVID-19 cases data
+        } else {
+            const data = await response.json();
+            throw new Error(data.message || 'Failed to update COVID-19 cases');
+        }
+    } catch (error) {
+        console.error('Error updating COVID-19 cases:', error);
+        throw error;
+    }
+}
 
 // Function to fetch vaccination status
 export async function fetchVaccinationStatus() {

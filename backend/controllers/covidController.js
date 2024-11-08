@@ -5,10 +5,10 @@ const vaccinationStatus = require('../models/vaccinationStatus');
 // Update COVID-19 cases (Healthcare officials)
 const updateCovidCases = async (req, res) => {
   try {
-    const { region, activeCases, recoveredCases, deaths } = req.body;
+    const { region, activeCases, recovered, deaths } = req.body;
     const updatedCase = await CovidCase.findOneAndUpdate(
       { region },
-      { activeCases, recoveredCases, deaths },
+      { activeCases, recovered, deaths },
       { new: true, upsert: true }
     );
     res.status(200).json(updatedCase);
